@@ -1,14 +1,21 @@
 from ast import Return
+from typing import List
 import pandas as pd
 from itertools import combinations
 
 
-data = pd.read_csv (r'/Users/chloelebian/Desktop/OpenClassrooms_P7/Data1.csv').to_dict('records')
+data = pd.read_csv (r'/Users/chloelebian/Desktop/OpenClassrooms_P7/dataset1_Python_P7.csv').to_dict('records')
+
+newdata = sorted(data, key=lambda d: d['profit'], reverse=True)
+newdata = newdata[:300]
+newdata = sorted(newdata, key=lambda y: y['price'], reverse=True)
+newdata = newdata[:10]
 
 list_of_combinations = []
-for i in range(1, 21):
-    a = combinations(data, i)
+for i in range(1, 11):
+    a = combinations(newdata, i)
     list_of_combinations += list(a)
+print(len(list_of_combinations))
 
 def calculate_cost(b):
     i = len(b)
@@ -22,7 +29,7 @@ def calculate_profit(c):
     i = len(c)
     total_profit = 0
     for y in range (0, i):
-        profit_rate = int(c[y]['profit'][:-1])
+        profit_rate = c[y]['profit']
         profit_rate = profit_rate / 100
         profit_per_action = c[y]['price'] * profit_rate
         total_profit = total_profit + profit_per_action
@@ -32,7 +39,7 @@ def calculate_profit_max(d):
     i = len(d)
     total_profit = 0
     for y in range (0, i):
-        profit_rate = int(d[y]['profit'][:-1])
+        profit_rate = d[y]['profit']
         profit_rate = profit_rate / 100
         profit_per_action = d[y]['price'] * profit_rate
         total_profit = total_profit + profit_per_action
@@ -49,6 +56,8 @@ for i in range(0, y):
         new_list_of_combinations.append(b)
 
 z = len(new_list_of_combinations)
+print(z)
+
 best_combination = new_list_of_combinations[0]
 
 for i in range (1,z):
@@ -60,19 +69,3 @@ for i in range (1,z):
 
 print(best_combination)
 calculate_profit_max(best_combination)
-
-    
-    
-
-    
-
-
-
-
-
-#une premiere fonction qui prend combi et calcule le cout
-#une fonction qui prend la combinaison en paramettre et calcule le profit 
-
-#on parcourt la liste des combinaison et on enlève toutes celles qui ont un prix sup à 500
-#on parcourt la nouvelle liste nettoyée et on calcule le profit de chaque combi
-#si profit actuel est sup au profit précédent, meilleur combi=combi actuelle
