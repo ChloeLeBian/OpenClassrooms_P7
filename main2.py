@@ -6,6 +6,10 @@ from itertools import combinations
 
 data = pd.read_csv (r'/Users/chloelebian/Desktop/OpenClassrooms_P7/dataset1_Python_P7.csv').to_dict('records')
 
+i = len(data)
+print(i)
+
+
 newdata = sorted(data, key=lambda d: d['profit'], reverse=True)
 newdata = newdata[:300]
 newdata = sorted(newdata, key=lambda y: y['price'], reverse=True)
