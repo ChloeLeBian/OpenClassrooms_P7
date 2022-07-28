@@ -59,14 +59,18 @@ for i in range(0, y):
 z = len(new_list_of_combinations)
 best_combination = new_list_of_combinations[0]
 
-for i in range (1,z):
+for i in range(1,z):
     c = new_list_of_combinations[i]
     if calculate_profit(c)>=calculate_profit(best_combination):
         best_combination = c
     else:
         best_combination = best_combination
 
-print(best_combination)
+q = len(best_combination)
+
+for i in range(1, q):
+    print(best_combination[i]['name'])
+    
 calculate_profit_max(best_combination)
 calculate_cost_max(best_combination)
 
