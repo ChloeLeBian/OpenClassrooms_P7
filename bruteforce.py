@@ -38,6 +38,14 @@ def calculate_profit_max(d):
         total_profit = total_profit + profit_per_action
     print(total_profit)
 
+def calculate_cost_max(b):
+    i = len(b)
+    total_cost = 0
+    for y in range(0,i):
+        cost_per_action = b[y]['price']
+        total_cost = total_cost + cost_per_action
+    print(total_cost)
+
 y = len(list_of_combinations)
 
 new_list_of_combinations = []
@@ -60,6 +68,7 @@ for i in range (1,z):
 
 print(best_combination)
 calculate_profit_max(best_combination)
+calculate_cost_max(best_combination)
 
     
     
@@ -68,11 +77,3 @@ calculate_profit_max(best_combination)
 
 
 
-
-
-#une premiere fonction qui prend combi et calcule le cout
-#une fonction qui prend la combinaison en paramettre et calcule le profit 
-
-#on parcourt la liste des combinaison et on enlève toutes celles qui ont un prix sup à 500
-#on parcourt la nouvelle liste nettoyée et on calcule le profit de chaque combi
-#si profit actuel est sup au profit précédent, meilleur combi=combi actuelle
