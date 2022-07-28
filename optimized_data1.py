@@ -12,7 +12,7 @@ newdata = []
 z = len(data)
 
 for i in range(0,z):
-    if data[i]['price'] > 0:
+    if data[i]['price'] > 0 and data[i]['profit'] > 0:
         newdata.append(data[i])
 
 newdata = sorted(newdata, key=lambda d: d['profit'], reverse=True)
